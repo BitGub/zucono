@@ -16,11 +16,11 @@
 #
 development:
   adapter: postgresql
-  encoding: unicode
-  database: zucono_development
+  encoding: utf8
+  database: shop_admin_develop
   pool: 5
-  username: zucono
-  password:
+  username: zucono_admin
+  password: ice89cream65maker54
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -46,15 +46,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: zucono_test
+  database: shop_admin_test
   pool: 5
-  username: zucono
-  password:
+  username: zucono_admin
+  password: ice89cream65maker54
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: zucono_production
+  database: shop_admin_production
   pool: 5
-  username: zucono
-  password:
+  username: zucono_admin
+  password: ice89cream65maker54
