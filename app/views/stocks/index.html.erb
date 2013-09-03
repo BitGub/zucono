@@ -1,0 +1,24 @@
+<h1>Stocks</h1>
+
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Minimum Stock</th>
+    <th>Current Stock</th>
+  </tr>
+      <% @products.each do |product|%>
+  <tr>
+    <td>
+      <%= product.product_name %>
+    </td>
+    <td>
+      <%= product.minimum_stock unless product.blank? %>
+    </td>
+    <td>
+      <% product.stocks.each do |s| %>
+      <%= s.current_stock unless s.current_stock.blank? %>
+    </td>
+  </tr>
+  <% end %>
+<% end %>
+</table>

@@ -4,14 +4,22 @@
 </div>
 
 <dl class="dl-horizontal">
+
   <dt><strong><%= model_class.human_attribute_name(:product_name) %>:</strong></dt>
   <dd><%= @product.product_name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:unit_price) %>:</strong></dt>
   <dd><%= @product.unit_price %></dd>
   <dt><strong><%= model_class.human_attribute_name(:product_description) %>:</strong></dt>
   <dd><%= @product.product_description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:deleted) %>:</strong></dt>
-  <dd><%= @product.deleted %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:minimum_stock) %>:</strong></dt>
+  <dd><%= @product.minimum_stock %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:current_stock) %>:</strong></dt>
+  <dd>
+      <% @product.stocks.each do |s| %>
+
+  	<%= s.current_stock unless s.blank? %>
+  	<%end%>
+  	</dd>
 </dl>
 
 <div class="form-actions">

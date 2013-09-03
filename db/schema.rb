@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827152054) do
+ActiveRecord::Schema.define(version: 20130828145942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,9 +20,19 @@ ActiveRecord::Schema.define(version: 20130827152054) do
     t.string   "product_name"
     t.decimal  "unit_price"
     t.string   "product_description"
-    t.boolean  "deleted"
+    t.boolean  "deleted",             default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "minimum_stock"
+  end
+
+  create_table "stocks", force: true do |t|
+    t.integer  "current_stock"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "stocks", ["product_id"], name: "index_stocks_on_product_id", using: :btree
 
 end
