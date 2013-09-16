@@ -49,3 +49,4 @@ end
 
 gem 'less-rails'
 gem 'therubyracer'
+gem 'angularjs-rails'
