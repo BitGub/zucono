@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
 
 def index
-    @products = Product.all
+    @products = Product.all.includes(:stocks)
   end
 
   def show
@@ -29,9 +29,9 @@ def index
   end
 
   def update
+  	@stock=Stock.find(params[:id])
     respond_to do |format|
       if @stock.update(stock_params)
-        format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

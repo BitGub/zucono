@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828145942) do
+ActiveRecord::Schema.define(version: 20130918142530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "products", force: true do |t|
     t.string   "product_name"
-    t.decimal  "unit_price"
+    t.decimal  "unit_price",          precision: 10, scale: 2
     t.string   "product_description"
-    t.boolean  "deleted",             default: false
+    t.boolean  "deleted",                                      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "minimum_stock"

@@ -32,7 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-  gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails'
+
+
+gem 'best_in_place', github: 'aaronchi/best_in_place'
 
 
 # Use ActiveModel has_secure_password

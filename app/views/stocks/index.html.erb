@@ -1,26 +1,29 @@
-<h1>Stocks</h1>
-
-<table>
-  <tr>
-    <th>Product Name</th>
-    <th>Minimum Stock</th>
-    <th>Current Stock</th>
-  </tr>
-     <form>
-      <% @products.each do |product|%>
-  <tr>
-    <td>
-      <%= product.product_name %>
-    </td>
-    <td>
-      <%= product.minimum_stock unless product.blank? %>
-    </td>
-    <td>
-      <% product.stocks.each do |s| %>
-      <%= s.current_stock unless s.current_stock.blank? %>
-    </td>
-  </tr>
-  <% end %>
-<% end %>
-     </form>
+<%- model_class = Stock -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:product_name) %></th>
+      <th><%= model_class.human_attribute_name(:minimum_stock) %></th>
+      <th><%= model_class.human_attribute_name(:current_stock) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.product_name %></td>
+        <td><%= product.minimum_stock %></td>
+          <% product.stocks.each do |stock| %>
+        	<td><%= stock.current_stock%></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_stock_path(stock), :class => 'btn btn-mini' %>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>
