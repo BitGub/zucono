@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
 
-def index
+  def index
     @products = Product.all.includes(:stocks)
   end
 
@@ -55,8 +55,4 @@ def index
       @stock = Stock.where(:id => params[:id]).first
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    # def stock_params
-    #   params.require(:stock).permit([:current_stock, :product_id])
-    # end
 end

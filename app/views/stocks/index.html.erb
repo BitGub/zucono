@@ -11,12 +11,11 @@
     </tr>
   </thead>
   <tbody>
-	  <%= form_tag url_for(:action => 'update_current') do |f| %>
+	  <%= form_tag url_for(:action => 'update_current') do %>
       <% @products.each do |product| %>
       <tr>
         <td><%= product.product_name %></td>
         <td><%= product.minimum_stock %></td>
-		<% key = [product.id]%>
         <td><%= text_field_tag "stock[][current_stock]", product.stocks.last.current_stock %></td>
 		<%= hidden_field_tag "stock[][product_id]", product.stocks.last.product_id %>
 	  </tr>
