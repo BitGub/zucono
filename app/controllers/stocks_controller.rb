@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
 
-def index
+  def index
     @products = Product.all.includes(:stocks)
   end
 
@@ -8,7 +8,6 @@ def index
   end
 
   def new
-    @stock = Stock.new
   end
 
   def edit
@@ -29,15 +28,6 @@ def index
   end
 
   def update
-  	@stock=Stock.find(params[:id])
-    respond_to do |format|
-      if @stock.update(stock_params)
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @stock.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def destroy
@@ -47,17 +37,22 @@ def index
       format.json { head :no_content }
     end
   end
+  
+	def update_current      
+    @stock_params = params[:stock]
+      @stock_params.each do |stock_params|
+        params.permit(:current_stock, :product_id)
+        @stock = Stock.new(stock_params)
+        @stock.save
+      end
+    redirect_to stocks_path, notice: 'Stocks were successfully updated'
+  end        
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stock
       @stock = Stock.where(:id => params[:id]).first
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def stock_params
-      params.require(:stock).permit(:current_stock)
-    end
-
 
 end

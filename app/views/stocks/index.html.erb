@@ -8,22 +8,19 @@
       <th><%= model_class.human_attribute_name(:product_name) %></th>
       <th><%= model_class.human_attribute_name(:minimum_stock) %></th>
       <th><%= model_class.human_attribute_name(:current_stock) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @products.each do |product| %>
+	  <%= form_tag url_for(:action => 'update_current') do %>
+      <% @products.each do |product| %>
       <tr>
         <td><%= product.product_name %></td>
         <td><%= product.minimum_stock %></td>
-          <% product.stocks.each do |stock| %>
-        	<td><%= stock.current_stock%></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_stock_path(stock), :class => 'btn btn-mini' %>
-        </td>
-      </tr>
-      <% end %>
-    <% end %>
+        <td><%= text_field_tag "stock[][current_stock]", product.stocks.last.current_stock %></td>
+		<%= hidden_field_tag "stock[][product_id]", product.stocks.last.product_id %>
+	  </tr>
+    	<% end %>
+		<%= submit_tag 'save' %>
+		<% end %>
   </tbody>
 </table>
