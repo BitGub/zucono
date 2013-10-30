@@ -16,4 +16,8 @@ require 'spec_helper'
         before { @user.first_name = " " }
         it { should_not be_valid }
       end
+      describe "when surname is not present" do
+        before { @user.surname = "" }
+        it { should_not be_valid }
+      end
   end
