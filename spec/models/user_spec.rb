@@ -15,9 +15,15 @@ require 'spec_helper'
     describe "when first name is not present" do
         before { @user.first_name = " " }
         it { should_not be_valid }
-      end
-      describe "when surname is not present" do
-        before { @user.surname = "" }
-        it { should_not be_valid }
-      end
+    end
+      
+    describe "when surname is not present" do
+      before { @user.surname = " " }
+      it { should_not be_valid }
+    end
+    
+    describe "when email is not present" do
+      before { @user.email = " " }
+      it { should_not be_valid }
+    end
   end
