@@ -9,6 +9,7 @@ require 'spec_helper'
     it { should respond_to(:first_name) }
     it { should respond_to(:surname) }
     it { should respond_to(:email) }
+    it { should respond_to(:password_digest) }
     
     it { should be_valid }
     
