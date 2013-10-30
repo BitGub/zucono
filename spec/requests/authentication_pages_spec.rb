@@ -34,7 +34,6 @@ describe "AuthenticationPages" do
         it { should have_link('Stock',      href: stocks_path) }
         it { should have_link('Orders',      href: "#") }
         it { should have_link('Sign out',    href: signout_path) }
-      end
         
       describe "followed by signout" do
             before { click_link "Sign out" }
@@ -43,6 +42,7 @@ describe "AuthenticationPages" do
             it { should_not have_link('Stock',      href: stocks_path) }
             it { should_not have_link('Orders',      href: "#") }
             it { should_not have_link('Sign out',    href: signout_path) }
+      end
     end
   end
 end

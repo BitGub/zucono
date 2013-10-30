@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+	<% if signed_in? %>
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -31,6 +32,7 @@
       </div>
     </div>
   </div>
+    <% end %>
  
   <div class="container">
       <% flash.each do |key, value| %>
