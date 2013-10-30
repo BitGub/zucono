@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # Success
     else
-      # Failour
+      flash[:error] = 'Invalid email/password combination'
+      redirect_to root_path
     end
   end
 
