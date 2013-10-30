@@ -29,7 +29,7 @@ describe "AuthenticationPages" do
         click_button "Sign in"
       end
 
-        it { should have_content("Hello, #{user.name}") }
+        it { should have_content("Hello, #{user.first_name} #{user.surname}") }
         it { should have_link('Products',    href: products_path) }
         it { should have_link('Stocks',      href: stocks_path) }
         it { should have_link('Orders',      href: orders_path) }
