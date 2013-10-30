@@ -34,6 +34,15 @@ describe "AuthenticationPages" do
         it { should have_link('Stock',      href: stocks_path) }
         it { should have_link('Orders',      href: "#") }
         it { should have_link('Sign out',    href: signout_path) }
+      end
+        
+      describe "followed by signout" do
+            before { click_link "Sign out" }
+            it { should_not have_content("Signed in as:#{user.first_name} #{user.surname}") }
+            it { should_not have_link('Products',    href: products_path) }
+            it { should_not have_link('Stock',      href: stocks_path) }
+            it { should_not have_link('Orders',      href: "#") }
+            it { should_not have_link('Sign out',    href: signout_path) }
     end
   end
 end
