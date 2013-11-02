@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
   def new
+    @user = User.new
+    @roles = Role.all
   end
 
   def create

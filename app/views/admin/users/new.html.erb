@@ -1,2 +1,26 @@
 <%= provide(:title, 'New User')%>
 
+<%= render partial('error_messages') %>
+
+<%= form_for @user, :url => {  :action => "create"} do |f|%>
+<%= f.label :first_name %>
+<%= f.text_field :first_name %>
+
+<%= f.label :surname %>
+<%= f.text_field :surname %>
+
+<%= f.label :email %>
+<%= f.email_field :email %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.label :password_confirmation %>
+<%= f.password_field :password_confirmation %>
+</br>
+</br>
+<%= f.collection_select(:role_id, Role.all, :id, :title, :prompt => "Select a Role")%>
+</br>
+</br>
+<%= f.submit %>
+<% end %>
