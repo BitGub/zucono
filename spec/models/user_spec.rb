@@ -17,6 +17,11 @@ require 'spec_helper'
     
     it { should be_valid }
     
+    describe "when role is not present" do
+      before { @user.role_id = " " }
+      it { should_not be_valid }
+    end
+    
     describe "when first name is not present" do
         before { @user.first_name = " " }
         it { should_not be_valid }
