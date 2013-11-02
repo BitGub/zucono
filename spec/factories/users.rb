@@ -8,18 +8,18 @@ FactoryGirl.define do
   end
   
   factory :admin_user, :parent => :user do
-    role { [ FactoryGirl.create(:admin_role) ] }
+    role { FactoryGirl.create(:admin_role) }
   end
   
   factory :manager_user, :parent => :user do
-    role { [ FactoryGirl.create(:manager_role) ] }
+    role { FactoryGirl.create(:manager_role) }
   end
   
   factory :shift_manager_user, :parent => :user do
-    role { [ FactoryGirl.create(:shift_manager_role) ] }
+    role { FactoryGirl.create(:shift_manager_role) }
   end
   
   factory :supplier_user, :parent => :user do
-    role { [ FactoryGirl.create(:supplier_role) ] }
+    role { FactoryGirl.create(:supplier_role) }
   end
 end
