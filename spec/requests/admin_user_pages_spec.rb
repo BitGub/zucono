@@ -30,10 +30,24 @@ describe "AdminUserPages" do
     end
     
     describe "after submission" do
-    before { click_button submit }
+      before { click_button submit }
 
-    it { should have_title('New User') }
-    it { should have_content('error') } 
-  end
+      it { should have_title('New User') }
+      it { should have_content('error') } 
+    end
+    
+    describe "with valid information" do
+      before do  fill_in "First name",            with: "first name"
+                 fill_in "Surname",               with: "surname"
+                 fill_in "Email",                 with: "new@email.com"
+                 fill_in "Password",              with: "userpassword"
+                 fill_in "Password confirmation", with: "userpassword"
+                 click_button "Create User" 
+      end
+      
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
+    end
   end
 end
