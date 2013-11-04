@@ -17,7 +17,11 @@ describe "AdminUserPages" do
   
   describe "new user page" do
     
-    before { visit new_admin_user_path }
+    let(:user) { FactoryGirl.create(:admin_user) }
+    before(:each) do
+      sign_in user
+      visit new_admin_user_path
+    end
     
     let(:submit) { "Create User" }
     
@@ -36,13 +40,24 @@ describe "AdminUserPages" do
       it { should have_content('error') } 
     end
     
-    describe "with valid information" do
-      before do  fill_in "First name",            with: "first name"
-                 fill_in "Surname",               with: "surname"
-                 fill_in "Email",                 with: "new@email.com"
-                 fill_in "Password",              with: "userpassword"
-                 fill_in "Password confirmation", with: "userpassword"
-                 click_button "Create User" 
+    describe "with valid information", :js => true do
+
+      before(:all) do 
+        FactoryGirl.create(:admin_role)
+        FactoryGirl.create(:manager_role)
+        FactoryGirl.create(:shift_manager_role)
+        FactoryGirl.create(:supplier_role) 
+      end
+      after(:all)  { Role.delete_all }
+
+      before do 
+        fill_in "First name",            with: "first name"
+        fill_in "Surname",               with: "surname"
+        fill_in "Email",                 with: "example@gmail.com"
+        fill_in "Password",              with: "userpassword"
+        fill_in "Password confirmation", with: "userpassword"
+        select("MANAGER", :from => "user_role_id")
+        click_button submit
       end
       
       it "should create a user" do
@@ -50,4 +65,5 @@ describe "AdminUserPages" do
       end
     end
   end
+  
 end
