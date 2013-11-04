@@ -6,6 +6,12 @@ GIT
       jquery-rails
       rails (>= 3.1)
 
+GIT
+  remote: git://github.com/bmabey/database_cleaner.git
+  revision: 6da38c4c1a565bbcc62ed9b84c2574537c6ebae2
+  specs:
+    database_cleaner (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -184,6 +190,7 @@ DEPENDENCIES
   cancan
   capybara (= 2.1.0)
   coffee-rails (~> 4.0.0)
+  database_cleaner!
   factory_girl_rails (= 4.2.1)
   jbuilder (~> 1.2)
   jquery-rails
