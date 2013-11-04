@@ -1,13 +1,12 @@
 class Admin::UsersController < ApplicationController
   def new
     @user = User.new
-    @roles = Role.all
   end
 
   def create
-    @user = User.new()
+    @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      redirect_to user_path(@user)
     else
       render 'new'
     end

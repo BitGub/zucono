@@ -6,7 +6,7 @@ describe "AdminUserPages" do
   
   describe "dashboard" do
     let(:user) { FactoryGirl.create(:admin_user) }
-    before(:each) do
+    before do
       sign_in user
       visit admin_dashboard_path
     end
@@ -17,9 +17,9 @@ describe "AdminUserPages" do
   
   describe "new user page" do
     
-    let(:user) { FactoryGirl.create(:admin_user) }
-    before(:each) do
-      sign_in user
+    let(:admin) { FactoryGirl.create(:admin_user) }
+    before do
+      sign_in admin
       visit new_admin_user_path
     end
     
@@ -35,12 +35,12 @@ describe "AdminUserPages" do
     
     describe "after submission" do
       before { click_button submit }
-
+    
       it { should have_title('New User') }
       it { should have_content('error') } 
     end
     
-    describe "with valid information", :js => true do
+    describe "with valid information" do
 
       before(:all) do 
         FactoryGirl.create(:admin_role)
@@ -48,6 +48,7 @@ describe "AdminUserPages" do
         FactoryGirl.create(:shift_manager_role)
         FactoryGirl.create(:supplier_role) 
       end
+      
       after(:all)  { Role.delete_all }
 
       before do 
@@ -57,7 +58,6 @@ describe "AdminUserPages" do
         fill_in "Password",              with: "userpassword"
         fill_in "Password confirmation", with: "userpassword"
         select("MANAGER", :from => "user_role_id")
-        click_button submit
       end
       
       it "should create a user" do
