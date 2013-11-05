@@ -12,6 +12,7 @@ Zucono::Application.routes.draw do
   end
   
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/admin/dashboard', to: 'users#admin_dashboard', via: 'get'
 
   # You can have the root of your site routed with "root"
   root 'static_pages#home'

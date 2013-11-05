@@ -2,7 +2,9 @@ require 'spec_helper'
 
   describe User do
     
-    before { @user = User.new(first_name: "Example", surname: "User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") }
+    before do 
+      @user = FactoryGirl.create(:admin_user)
+    end
 
     subject { @user }
 
@@ -13,8 +15,14 @@ require 'spec_helper'
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
     it { should respond_to(:authenticate ) }
+    it { should respond_to(:role) }
     
     it { should be_valid }
+    
+    describe "when role is not present" do
+      before { @user.role_id = " " }
+      it { should_not be_valid }
+    end
     
     describe "when first name is not present" do
         before { @user.first_name = " " }
@@ -44,18 +52,17 @@ require 'spec_helper'
     
   describe "when email address is already taken" do
       before do
-        user_with_same_email = @user.dup
-        user_with_same_email.email = @user.email.upcase
-        user_with_same_email.save
+        @user_with_same_email = @user.dup
+        @user_with_same_email.email = @user.email.upcase
+        @user_with_same_email.save
       end
 
-      it { should_not be_valid }
+      it { @user_with_same_email.should_not be_valid }
     end
     
     describe "when password is not present" do
       before do
-        @user = User.new(first_name: "Example", surname: "User", email: "user@example.com",
-                         password: " ", password_confirmation: " ")
+        @user.password = @user.password_confirmation = " "
       end
       it { should_not be_valid }
     end
