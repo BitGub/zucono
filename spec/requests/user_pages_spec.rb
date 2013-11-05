@@ -42,13 +42,7 @@ describe "UserPages" do
     
     describe "with valid information" do
 
-      before(:all) do 
-        FactoryGirl.create(:admin_role)
-        FactoryGirl.create(:manager_role)
-        FactoryGirl.create(:shift_manager_role)
-        FactoryGirl.create(:supplier_role) 
-      end
-      
+      before(:all) { FactoryGirl.create(:manager_role) }
       after(:all)  { Role.delete_all }
 
       before do 
