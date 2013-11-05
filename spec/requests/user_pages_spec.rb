@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "AdminUserPages" do
+describe "UserPages" do
   
   subject { page }
   
@@ -20,7 +20,7 @@ describe "AdminUserPages" do
     let(:admin) { FactoryGirl.create(:admin_user) }
     before do
       sign_in admin
-      visit new_admin_user_path
+      visit new_user_path
     end
     
     let(:submit) { "Create User" }
