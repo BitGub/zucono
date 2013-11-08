@@ -22,8 +22,12 @@ describe "AuthenticationPages" do
     end
     
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:admin_user) }
-      before { sign_in user }
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Email",    with: user.email.upcase
+        fill_in "Password", with: user.password
+        click_button "Sign in"
+      end
 
         it { should have_content("Signed in as:#{user.first_name} #{user.surname}") }
         it { should have_link('Products',    href: products_path) }

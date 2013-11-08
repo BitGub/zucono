@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'cancan/matchers'
 
   describe User do
     
@@ -91,5 +92,18 @@ require 'spec_helper'
         it { should_not eq user_for_invalid_password }
         specify { expect(user_for_invalid_password).to be_false }
       end
+    end
+    
+    describe "user abilities" do
+      
+      subject(:ability){ Ability.new(user) }
+      let(:user) { nil }
+      
+      context "when logged in as Admin" do
+        let(:user) { FactoryGirl.create(:admin_user) }
+        
+        it { should be_able_to(:manage, :all) } 
+      end
+   
     end
   end
