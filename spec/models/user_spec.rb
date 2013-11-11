@@ -96,13 +96,15 @@ require 'cancan/matchers'
     
     describe "user abilities" do
       
-      subject(:ability){ Ability.new(user) }
-      let(:user) { nil }
-      
       context "when logged in as Admin" do
-        let(:user) { FactoryGirl.create(:admin_user) }
+        before do
+          @admin = FactoryGirl.create(:admin_user)
+          @ability = Ability.new(@admin)
+        end
         
-        it { should be_able_to(:manage, :all) } 
+        it "should be able to manage all" do
+         @ability.should be_able_to(:manage, :all)
+       end 
       end
    
     end
