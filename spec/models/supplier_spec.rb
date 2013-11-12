@@ -2,11 +2,8 @@ require 'spec_helper'
 
   describe Supplier do
     
-    before do 
-      @supplier = FactoryGirl.create(:supplier)
-    end
-    
-    subject { @suppiler }
+    before { @supplier = FactoryGirl.create(:supplier) }
+    subject { @supplier }
     
     it { should respond_to(:name) }
     it { should respond_to(:telephone) }
