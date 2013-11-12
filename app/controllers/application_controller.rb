@@ -13,4 +13,13 @@ class ApplicationController < ActionController::Base
     end
     redirect_to root_url
   end
+  
+  private
+  
+    def lock_out
+      if !signed_in?
+        redirect_to root_url
+        flash[:error] = "You must be logged in to access this resource."
+      end
+    end
 end

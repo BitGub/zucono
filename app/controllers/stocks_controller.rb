@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-
+  before_action :lock_out
   def index
     @products = Product.all.includes(:stocks)
   end

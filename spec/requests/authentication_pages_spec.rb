@@ -22,7 +22,7 @@ describe "AuthenticationPages" do
     end
     
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:admin_user) }
       before do
         fill_in "Email",    with: user.email.upcase
         fill_in "Password", with: user.password
@@ -44,5 +44,11 @@ describe "AuthenticationPages" do
             it { should_not have_link('Sign out',    href: signout_path) }
       end
     end
+  end
+  
+  describe "not signed in" do
+    before { get products_path }
+    
+    specify { expect(response).to redirect_to(root_url) }
   end
 end
