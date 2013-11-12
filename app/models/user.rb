@@ -10,10 +10,4 @@ class User < ActiveRecord::Base
   
   has_secure_password
   validates :password, length: { minimum: 6 }
-  
-  def unauthorized?
-    if self.nil
-      return false
-    end
-  end
 end
