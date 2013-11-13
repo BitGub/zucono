@@ -15,7 +15,7 @@ require 'spec_helper'
     it { should be_valid }
     
     describe "when name is not present" do
-        before { @supplier.name = " " }
-        it { should_not be_valid }
+      before { @supplier.name = " " }
+      it { should_not be_valid }
     end
   end
