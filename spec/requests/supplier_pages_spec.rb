@@ -8,9 +8,9 @@ describe "SupplierPages" do
     let(:admin) { FactoryGirl.create(:admin_user) }
     before do
       sign_in admin
-      click_link suppliers_path
+      click_link("Suppliers")
     end
     
-    it { should_have content("Suppliers") }
+    it { should have_content("Listing suppliers") }
   end
 end
