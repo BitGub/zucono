@@ -10,6 +10,7 @@ class SuppliersController < ApplicationController
 
   def new
     @supplier = Supplier.new
+    @users = User.where(role_id: "4")
   end
 
   def edit

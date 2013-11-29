@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :role
-  belongs_to :supplier
+  has_and_belongs_to_many :suppliers
   
   before_save { self.email = email.downcase }
   

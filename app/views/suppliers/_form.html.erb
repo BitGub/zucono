@@ -1,17 +1,49 @@
-<%= form_for(@supplier) do |f| %>
-  <% if @supplier.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this supplier from being saved:</h2>
-
-      <ul>
-      <% @supplier.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @supplier, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render "shared/error_messages", :target => @supplier %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :telephone, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :telephone, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :fax, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :fax, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :payment_method, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :payment_method, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+	 <%= f.label :fax, :class => 'control-label' %>
+	 <div class="controls">
+	   <%= f.text_field :fax, :class => 'text_field' %>
+	 </div>
+  </div>
+  <%= fields_for @users do |user_supplier_field| %>
+    <div class="controls">
+  <%= user_supplier_field.text_field :name, :class => 'text_feild' %>
+    </div>
+	<% end %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                suppliers_path, :class => 'btn' %>
   </div>
 <% end %>
