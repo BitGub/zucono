@@ -36,11 +36,9 @@
 	   <%= f.text_field :fax, :class => 'text_field' %>
 	 </div>
   </div>
-  <%= fields_for @users do |user_supplier_field| %>
     <div class="controls">
-  <%= user_supplier_field.text_field :name, :class => 'text_feild' %>
+  <%= f.collection_select :user_id, @user, :id, :first_nmae %>
     </div>
-	<% end %>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
