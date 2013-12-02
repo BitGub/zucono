@@ -7,6 +7,7 @@ class CreateSuppliers < ActiveRecord::Migration
       t.integer :email
       t.string  :payment_method
       t.text    :notes
+
       t.timestamps
     end
   end
