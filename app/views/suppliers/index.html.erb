@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+	  <th>Supllier</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,6 +13,7 @@
   <tbody>
     <% @suppliers.each do |supplier| %>
       <tr>
+		<td><h5><%= supplier.name %><h5></td>
         <td><%= link_to 'Show', supplier %></td>
         <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
         <td><%= link_to 'Destroy', supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>

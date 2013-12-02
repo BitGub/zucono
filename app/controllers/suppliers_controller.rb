@@ -10,6 +10,7 @@ class SuppliersController < ApplicationController
 
   def new
     @supplier = Supplier.new
+    # change this!
     @users = User.where(role_id: "4")
   end
 
@@ -53,6 +54,7 @@ class SuppliersController < ApplicationController
   private
     def set_supplier
       @supplier = Supplier.find(params[:id])
+      @users = @supplier.users unless blank?
     end
 
     def supplier_params
