@@ -1,4 +1,4 @@
-class CreateSuppliers < ActiveRecord::Migration
+class Supplier < ActiveRecord::Migration
   def change
     create_table :suppliers do |t|
       t.string  :name
@@ -7,7 +7,6 @@ class CreateSuppliers < ActiveRecord::Migration
       t.integer :email
       t.string  :payment_method
       t.text    :notes
-
       t.timestamps
     end
   end
