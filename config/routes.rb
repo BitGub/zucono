@@ -1,6 +1,5 @@
 Zucono::Application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  resources :suppliers
   resources :users
   resources :orders
   resources :sessions, only: [:new, :create, :destroy]
@@ -14,7 +13,6 @@ Zucono::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/admin/dashboard', to: 'users#admin_dashboard', via: 'get'
 
-  # You can have the root of your site routed with "root"
   root 'static_pages#home'
 
   # Example of regular route:

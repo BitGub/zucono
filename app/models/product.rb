@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :stocks
+  belongs_to :supplier
   validates :product_name, :presence => true
   validates :minimum_stock, numericality: true 
   validates :unit_price, :format => { :with => /\A\d+??(?:\.\d{0,2})?\z/ }, numericality: true
