@@ -10,8 +10,7 @@ class SuppliersController < ApplicationController
 
   def new
     @supplier = Supplier.new
-    # change this!
-    @users = User.where(role_id: "4")
+    @users = User.joins(:role).where('roles.title=?', "SUPPLIER")
   end
 
   def edit
