@@ -1,4 +1,9 @@
 namespace :db do
+  
+  desc "fill roles table"
+  task addroles: :environment do
+    roles = Role.create!([{ title: "ADMINISTRATOR" }, { title: "SUPPLIER" }, { title: "MANAGER" }, { title: "SHIFT MANAGER" }])
+  end
   desc "Create Admin user"
   task populate: :environment do
     role = Role.find_by(title: "ADMINISTRATOR")
