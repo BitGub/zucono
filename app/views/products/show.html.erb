@@ -14,11 +14,7 @@
   <dt><strong><%= model_class.human_attribute_name(:minimum_stock) %>:</strong></dt>
   <dd><%= @product.minimum_stock %></dd>
   <dt><strong><%= model_class.human_attribute_name(:current_stock) %>:</strong></dt>
-  <dd>
-      <% @product.stocks.each do |s| %>
-  	    <%= s.current_stock unless s.blank? %>
-  	  <%end%>
-  </dd>
+  <dd><%= @product.stocks.last.current_stock unless blank? %></dd>
 </dl>
 
 <div class="form-actions">
