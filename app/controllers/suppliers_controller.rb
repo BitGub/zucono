@@ -18,7 +18,7 @@ class SuppliersController < ApplicationController
 
   def create
     @supplier = Supplier.new(supplier_params)
-
+  
     respond_to do |format|
       if @supplier.save
         format.html { redirect_to @supplier, notice: 'Supplier was successfully created.' }

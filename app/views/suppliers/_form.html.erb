@@ -37,7 +37,7 @@
 	 </div>
   </div>
     <div class="controls">
-  <%= f.collection_select :user_ids, @users, :id, :first_name %>
+  <%= f.collection_select :user_ids, User.joins(:role).where('roles.title=?', "SUPPLIER"), :id , :first_name %>
     </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
