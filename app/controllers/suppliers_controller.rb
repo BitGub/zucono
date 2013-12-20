@@ -10,7 +10,6 @@ class SuppliersController < ApplicationController
 
   def new
     @supplier = Supplier.new
-    @users = User.joins(:role).where('roles.title=?', "SUPPLIER")
   end
 
   def edit
