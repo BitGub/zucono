@@ -11,8 +11,12 @@
     <dd><%= @supplier.telephone %></dd>
   <dt><strong><%= model_class.human_attribute_name(:fax) %>:</strong></dt>
     <dd><%= @supplier.fax %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+	<dd><%= @supplier.email %></dd>
   <dt><strong><%= model_class.human_attribute_name(:payment_method) %>:</strong></dt>
-    <dd><%= @supplier.payment_method %></dd>
+  <dd><%= @supplier.payment_method %></dd>
+<dt><strong><%= model_class.human_attribute_name(:website) %>:</strong></dt>
+    <dd><%= @supplier.website %></dd>
   <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
 	<dd><%= @supplier.notes %><dd>
 	<% @supplier.users.each do |users|%>
